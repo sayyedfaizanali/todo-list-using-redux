@@ -1,24 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import './Component/TodoForm.css'
+import {store} from './State/store';
 
+import { Provider } from 'react-redux';
+import TodoForm from './Component/TodoForm';
+import TodoDropdown from './Component/TodoDropdown';
+import TodoList from './Component/TodoList';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  <Provider store={store}>
+  <div className="app">
+    <h1>Redux Table App</h1>
+    <div className='top-part'>
+      <div className='form'>
+       <TodoForm />
+      </div>
+      <TodoDropdown />
     </div>
+    <div className='table'>
+    <TodoList />
+    </div>
+  </div>
+</Provider>
   );
 }
 
